@@ -1,24 +1,26 @@
 import fs from 'fs'
-import fsPromisses from 'fs/promises'
+import fsPromises from 'fs/promises'
 
 import config from './config.js'
-import { join, extname } from 'path'
-
+import {
+  join,
+  extname
+} from 'path'
 const {
   dir: {
     publicDirectory
   }
 } = config
-
 export class Service {
   createFileStream(filename) {
     return fs.createReadStream(filename)
   }
 
   async getFileInfo(file) {
+    // file = home/index.html
     const fullFilePath = join(publicDirectory, file)
-
-    await fsPromisses.access(fullFilePath)
+    // valida se existe, se não existe estoura erro!!
+    await fsPromises.access(fullFilePath)
     const fileType = extname(fullFilePath)
     return {
       type: fileType,
