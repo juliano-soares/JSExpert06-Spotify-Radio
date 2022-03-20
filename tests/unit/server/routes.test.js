@@ -42,7 +42,6 @@ describe('#Routes - test site for api response', () => {
     )
     expect(params.response.end).toHaveBeenCalled()
   })
-  
   test(`GET /home - should response with ${pages.homeHTML} file stream`, async () => {
     const params = TestUtil.defaultHandleParams()
     params.request.method = 'GET'
@@ -66,7 +65,6 @@ describe('#Routes - test site for api response', () => {
     expect(Controller.prototype.getFileStream).toBeCalledWith(pages.homeHTML)
     expect(mockFileStream.pipe).toHaveBeenCalledWith(params.response)
   })
-  
   test(`GET /controller - should response with ${pages.controllerHTML} file stream`, async () => {
     const params = TestUtil.defaultHandleParams()
     params.request.method = 'GET'
@@ -178,7 +176,6 @@ describe('#Routes - test site for api response', () => {
       expect(params.response.writeHead).toHaveBeenCalledWith(404)
       expect(params.response.end).toHaveBeenCalled()
     })
-    
     test('given an error it should respond with 500', async () => {
       const params = TestUtil.defaultHandleParams()
       params.request.method = 'GET'
