@@ -5,4 +5,4 @@ import {
   handler
 } from './routes.js'
 
-export default createServer(handler)
+export default () => createServer(handler)
